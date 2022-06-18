@@ -67,11 +67,37 @@ MULTI_ACCOUNT_CONFIG_TEMPLATE = """accounts:
 # For now, we have included s3, SSM Parameter Store, and Secrets Manager.
 # Feel free to open up a GitHub issue if you have suggestions.
 READ_ONLY_DATA_EXFILTRATION_ACTIONS = [
-    "s3:GetObject",
-    "ssm:GetParameter",
-    "ssm:GetParameters",
-    "ssm:GetParametersByPath",
-    "secretsmanager:GetSecretValue",
+	"apigateway:GET",
+	"athena:GetDatabase",
+	"athena:GetQueryExecution",
+	"athena:GetQueryResults",
+	"cassandra:Select",
+	"chime:Retrieve*",
+	"cloudtrail:LookupEvents",
+	"config:SelectResourceConfig",
+	"datapipeline:QueryObjects",
+	"dax:Query",
+	"dax:Scan",
+	"dynamodb:Get*",
+	"dynamodb:Query",
+	"dynamodb:Scan",
+	"ec2:DescribeInstanceAttribute",
+	"ec2:GetConsoleOutput",
+	"ec2:GetConsoleScreenshot",
+	"es:ESHttpGet",
+	"glue:GetDatabase",
+	"glue:GetDatabases",
+	"glue:GetTable",
+	"glue:GetTables",
+	"kendra:Query",
+	"lambda:GetFunction",
+	"logs:StartQuery",
+	"s3:GetObject",
+	"s3-object-lambda:GetObject",
+	"ssm:GetDocument",
+	"ssm:GetParameter",
+	"ssm:GetParameters",
+	"ssm:GetParametersByPath"
 ]
 
 PRIVILEGE_ESCALATION_METHODS = {
@@ -133,6 +159,7 @@ SERVICE_PREFIXES_WITH_COMPUTE_ROLES = ["ec2", "eks", "ecs-tasks", "lambda"]
 # https://gist.github.com/kmcquade/33860a617e651104d243c324ddf7992a
 ACTIONS_THAT_RETURN_CREDENTIALS = [
     "chime:createapikey",
+    "codeartifact:GetAuthorizationToken",
     "codepipeline:pollforjobs",
     "cognito-identity:getopenidtoken",
     "cognito-identity:getopenidtokenfordeveloperidentity",
